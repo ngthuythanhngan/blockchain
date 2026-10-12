@@ -1,0 +1,153 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+
+    # ── AUTH ─────────────────────────────────────────────────
+    path('auth/check-email/',            views.check_email),
+    path('auth/register/',               views.register_normal),
+    path('auth/login/',                  views.login_normal),
+    path('auth/google/register/',        views.register_google),
+    path('auth/google/login/',           views.login_google),
+    path('auth/admin/login/',            views.admin_login),
+    path('auth/forgot-password/',        views.forgot_password),
+    path('auth/verify-otp/',             views.verify_otp),
+    path('auth/reset-password/',         views.reset_password),
+
+    # ── STAFF ────────────────────────────────────────────────
+    path('staff/list/',                  views.list_staff),
+    path('staff/create/',                views.create_staff),
+    path('staff/update-role/',           views.update_staff_role),
+    path('staff/change-password/',       views.change_staff_password),
+    path('staff/upload-avatar/',         views.upload_staff_avatar),
+    path('staff/<str:staff_id>/',        views.get_staff),
+
+    # ── PRODUCT ──────────────────────────────────────────────
+    path('product/categories/',          views.list_categories),
+    path('category/list/',               views.list_categories),
+    path('product/category/create/',     views.create_category),
+    path('product/category/update/',     views.update_category),
+    path('product/category/upload-image/', views.upload_category_image),
+    path('product/list/',                views.list_products),
+    path('product/create/',              views.create_product),
+    path('product/delete/',              views.delete_product),
+    path('product/import/',              views.import_stock),
+    path('product/update/',              views.update_product),
+    path('product/update-variant/',      views.update_variant),
+    path('product/add-variants/',        views.add_variants),
+    path('product/content/save/',        views.save_product_content),
+    path('product/<str:product_id>/variants/',  views.get_product_variants),
+    path('product/<str:product_id>/detail/',    views.get_product_detail),
+    path('product/<str:product_id>/content/',   views.get_product_content),
+
+    # ── VOUCHER ──────────────────────────────────────────────
+    path('voucher/list/',                views.list_vouchers),
+    path('voucher/active/',              views.list_active_vouchers),
+    path('voucher/all/',                 views.list_all_vouchers_for_user),
+    path('voucher/create/',              views.create_voucher),
+    path('voucher/apply/',               views.apply_voucher),
+    path('voucher/deactivate/',          views.deactivate_voucher),
+    path('voucher/best/',                views.get_best_voucher),
+    path('voucher/best-for-cart/',       views.get_best_voucher_for_cart),
+    path('voucher/best-for-product/',    views.get_best_voucher_for_product),
+
+    # ── ORDER ────────────────────────────────────────────────
+    path('order/create/',                views.create_order),
+    path('order/list/',                  views.list_orders),
+    path('order/cancel/',                views.cancel_order),
+    path('order/update-status/',         views.update_order_status),
+    path('order/return/request/',        views.create_return_request),
+    path('order/return/list/',           views.list_return_requests),
+    path('order/return/process/',        views.process_return_request),
+    path('order/<str:order_id>/return/', views.get_return_request),
+
+    # ── CUSTOMER ─────────────────────────────────────────────
+    path('customer/upload-avatar/',                  views.upload_avatar),
+    path('customer/update/',                         views.update_customer),
+    path('customer/change-password/',                views.change_password),
+    path('customer/address/create/',                 views.create_customer_address),
+    path('customer/address/update/',                 views.update_customer_address),
+    path('customer/address/delete/',                 views.delete_customer_address),
+    path('customer/<str:customer_id>/addresses/',    views.get_customer_addresses),
+    path('customer/<str:customer_id>/',              views.get_customer),
+
+    # ── REVIEW ───────────────────────────────────────────────
+    path('review/list/',           views.list_reviews),
+    path('review/create/',         views.create_review),
+    path('review/update/',         views.update_review),
+    path('review/delete/',         views.delete_review),
+    path('review/upload-media/',   views.upload_review_media),
+
+    # ── COMMENT ──────────────────────────────────────────────
+    path('comment/list/',                views.list_comments),
+    path('comment/create/',              views.create_comment),
+    path('comment/update/',              views.update_comment),
+    path('comment/delete/',              views.delete_comment),
+    path('comment/like/',                views.toggle_like),
+    path('comment/admin-reply/',         views.admin_comment_reply),
+    path('comment/upload-media/',        views.upload_comment_media),
+
+    # ── LIKE ─────────────────────────────────────────────────
+    path('like/toggle/',           views.toggle_like),
+
+    # ── BLOG / POST ──────────────────────────────────────────
+    path('post/list/',             views.list_posts),
+    path('post/create/',           views.create_post),
+    path('post/update/',           views.update_post),
+    path('post/delete/',           views.delete_post),
+    path('post/<str:post_id>/',    views.get_post),
+
+    # ── BANNER ───────────────────────────────────────────────
+    path('banner/list/',           views.banner_list),
+    path('banner/create/',         views.banner_create),
+    path('banner/update/',         views.banner_update),
+    path('banner/delete/',         views.banner_delete),
+    path('banner/item/add/',       views.banner_item_add),
+    path('banner/item/update/',    views.banner_item_update),
+    path('banner/item/delete/',    views.banner_item_delete),
+    path('banner/item/reorder/',   views.banner_item_reorder),
+
+    # ── ADMIN — REVIEWS & CUSTOMERS ──────────────────────────
+    path('admin/reviews/',               views.admin_list_reviews),
+    path('admin/reply/',                 views.admin_reply),
+    path('admin/reply/delete/',          views.admin_delete_reply),
+    path('admin/customers/',             views.admin_list_customers),
+    path('admin/comments/',              views.admin_list_comments),
+    path('admin/notifications/',         views.admin_notifications),
+
+    # ── ADMIN — ORDERS ───────────────────────────────────────
+    # FIX: thêm 2 route mới để Orders.js và Orderdetails.js hoạt động đúng
+    # (cũ là order/admin/list/ — giữ lại để backward compat)
+    path('order/admin/list/',            views.admin_list_orders),     # backward compat
+    path('admin/orders/',                views.admin_list_orders),     # Orders.js dùng GET /api/admin/orders/?status=&search=
+    path('admin/orders/<str:order_id>/', views.admin_get_order_detail), # Orderdetails.js dùng GET /api/admin/orders/<id>/
+
+    # ── SEARCH ───────────────────────────────────────────────
+    path('search/text/',                 views.search_text),
+    path('search/image/',                views.search_image),
+    path('search/suggestions/',          views.search_suggestions),
+    path('search/rebuild-index/',        views.rebuild_search_index),
+    path('search/model-info/',           views.search_model_info),
+
+    # ── PAYMENT ──────────────────────────────────────────────
+    path('payment/momo/create/',         views.momo_create,   name='momo_create'),
+    path('payment/momo/ipn/',            views.momo_ipn,      name='momo_ipn'),
+    path('payment/momo/return/',         views.momo_return,   name='momo_return'),
+    path('payment/vnpay/create/',        views.vnpay_create,  name='vnpay_create'),
+    path('payment/vnpay/return/',        views.vnpay_return,  name='vnpay_return'),
+
+    # ── HOME ─────────────────────────────────────────────────
+    path('home/featured/',               views.home_featured,                name='home_featured'),
+    path('home/best-sellers/',           views.home_best_sellers,            name='home_best_sellers'),
+    path('home/featured-categories/',    views.home_featured_categories,     name='home_featured_categories'),
+    path('home/save-featured-categories/', views.home_save_featured_categories, name='home_save_featured_categories'),
+
+    # ── DASHBOARD ────────────────────────────────────────────
+    path('admin/dashboard/overview/',           views.dashboard_overview,           name='dashboard_overview'),
+    path('admin/dashboard/revenue/day/',        views.dashboard_revenue_by_day,     name='dashboard_revenue_day'),
+    path('admin/dashboard/revenue/month/',      views.dashboard_revenue_by_month,   name='dashboard_revenue_month'),
+    path('admin/dashboard/revenue/year/',       views.dashboard_revenue_by_year,    name='dashboard_revenue_year'),
+    path('admin/dashboard/revenue/product/',    views.dashboard_revenue_by_product, name='dashboard_revenue_product'),
+    path('admin/dashboard/revenue/brand/',      views.dashboard_revenue_by_brand,   name='dashboard_revenue_brand'),
+    path('admin/dashboard/revenue/compare/',    views.dashboard_revenue_compare,    name='dashboard_revenue_compare'),
+]
