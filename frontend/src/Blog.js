@@ -5,11 +5,11 @@ import Navbar from "./Navbar";
 
 const API = "http://localhost:8000/api";
 
-const CATEGORIES = ["Tất cả", "Mẹo vặt", "Đánh giá", "Tin tức", "Hướng dẫn"];
+const CATEGORIES = ["Tất cả", "Công nghệ", "Kiến thức", "Tin tức", "Hướng dẫn"];
 
 const CAT_COLORS = {
-  "Mẹo vặt":   "bg-emerald-50 text-emerald-700 border-emerald-200",
-  "Đánh giá":  "bg-blue-50 text-blue-700 border-blue-200",
+  "Công nghệ":   "bg-emerald-50 text-emerald-700 border-emerald-200",
+  "Kiến thức":  "bg-blue-50 text-blue-700 border-blue-200",
   "Tin tức":   "bg-amber-50 text-amber-700 border-amber-200",
   "Hướng dẫn": "bg-purple-50 text-purple-700 border-purple-200",
 };
@@ -168,7 +168,7 @@ export default function Blog() {
           </div>
           <h1 className="text-5xl font-black text-white mb-4">Blog & Bài viết</h1>
           <p className="text-white/70 text-lg mb-10">
-            Mẹo làm đẹp, đánh giá sản phẩm và xu hướng skincare mới nhất
+            Cập nhật kiến thức về Blockchain, cách xác minh mỹ phẩm chính hãng và truy xuất thông tin nguồn gốc sản phẩm.
           </p>
           {/* Search bar */}
           <div className="relative max-w-lg mx-auto">

@@ -118,14 +118,14 @@ export default function Login() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#2D5A27]/90 via-[#2D5A26]/60 to-transparent"></div>
           <div className="relative h-full z-10 p-12 flex flex-col justify-between text-white">
             <div>
-              <span className="text-2xl font-black tracking-tighter uppercase">Luxe Glow</span>
+              <span className="text-4xl font-black tracking-tighter uppercase text-[#2D5A27]">Luxe Glow</span>
               <h1 className="text-4xl font-bold leading-tight mt-6">
-                Đánh thức vẻ đẹp <br /> thuần khiết từ <br /> thiên nhiên.
+                Xác thực mỹ phẩm <br /> an tâm làm đẹp.
               </h1>
             </div>
             <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-2xl">
               <p className="text-sm font-medium leading-relaxed italic">
-                "Chúng tôi tin rằng mỹ phẩm không chỉ làm đẹp, mà còn là cách bạn yêu thương bản thân mỗi ngày."
+                "Minh bạch nguồn gốc, xác thực thông tin, bảo vệ niềm tin người tiêu dùng."
               </p>
               <div className="mt-4 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden">
@@ -145,10 +145,10 @@ export default function Login() {
           <div className="max-w-sm mx-auto w-full">
             <div className="mb-10">
               <h2 className="text-3xl font-extrabold text-[#121A11] mb-2">
-                {isLogin ? "Đăng nhập" : "Tham gia cùng chúng tôi"}
+                {isLogin ? "Đăng nhập" : "Tạo tài khoản"}
               </h2>
               <p className="text-slate-400 text-sm">
-                {isLogin ? "Chào mừng bạn quay trở lại với Luxe Glow!" : "Bắt đầu hành trình chăm sóc da chuyên nghiệp."}
+                {isLogin ? "Chào mừng bạn quay trở lại với Luxe Glow!" : "Đăng ký để khám phá và xác minh nguồn gốc mỹ phẩm."}
               </p>
             </div>
 

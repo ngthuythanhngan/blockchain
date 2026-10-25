@@ -356,68 +356,71 @@ export default function Home() {
     <div className="bg-[#f8f7f4] font-['Manrope'] min-h-screen text-slate-900">
       <Navbar />
 
-      {/* ── HERO ── */}
-      <section className="relative min-h-[80vh] flex items-center px-8 lg:px-20 overflow-hidden bg-[#f3f4f1] py-16">
-        <div className="relative z-10 max-w-xl">
-          <span className="inline-block px-4 py-1.5 bg-[#2D5A27]/10 text-[#2D5A27] rounded-full text-xs font-bold tracking-widest uppercase mb-6">Organic & Natural</span>
-          <h1 className="text-5xl lg:text-6xl font-bold leading-[1.1] mb-8 text-slate-900">
-            Vẻ đẹp thuần khiết từ <span className="text-[#2D5A27] italic">Thiên Nhiên</span>
+      
+      {/* ── HERO: XÁC THỰC MỸ PHẨM ── */}
+      <section className="relative flex items-center overflow-hidden bg-white px-6 py-16 sm:px-10 lg:min-h-[650px] lg:px-16 xl:px-24 2xl:px-32">
+        {/* Nội dung bên trái */}
+        <div className="relative z-10 w-full lg:w-1/2">
+          <span className="mb-8 inline-flex items-center gap-2 rounded-full bg-green-50 px-5 py-3 text-sm font-bold text-[#2D5A27]">
+            <span className="text-lg">🛡️</span>
+            Nền tảng xác thực mỹ phẩm bằng blockchain
+          </span>
+
+          <h1 className="mb-6 text-4xl font-extrabold leading-tight text-slate-900 sm:text-5xl lg:text-6xl">
+            Mỹ phẩm chính hãng
+            <br />
+            <span className="text-[#2D5A27]">
+              An tâm xác thực
+            </span>
           </h1>
-          <p className="text-lg text-slate-600 mb-10 leading-relaxed">Khám phá bộ sưu tập mỹ phẩm hữu cơ cao cấp, giúp nuôi dưỡng làn da bạn một cách nhẹ nhàng và an toàn nhất.</p>
-          <div className="flex gap-4">
-            <button onClick={() => navigate("/product")} className="px-10 py-4 bg-[#2D5A27] text-white rounded-full font-bold hover:shadow-2xl hover:shadow-[#2D5A27]/30 transition-all hover:-translate-y-1">Mua Ngay</button>
+
+          <p className="mb-8 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">
+            Kiểm tra thông tin và xác minh tính xác thực của mỹ phẩm
+            bằng công nghệ blockchain, hỗ trợ truy xuất nguồn gốc,
+            minh bạch dữ liệu và bảo vệ người tiêu dùng.
+          </p>
+
+          <div className="flex flex-wrap gap-4">
+            <button
+              onClick={() => navigate("/product")}
+              className="flex items-center gap-3 rounded-full bg-[#2D5A27] px-8 py-4 font-bold text-white transition-all hover:-translate-y-1 hover:bg-[#1F3F1B] hover:shadow-lg"
+            >
+              Bắt đầu xác minh
+              <span className="text-xl">→</span>
+            </button>
+
+            <button
+              onClick={() => navigate("/blog")}
+              className="rounded-full border-2 border-[#287D45] px-8 py-4 font-bold text-[#2D5A27] transition-colors hover:bg-green-50"
+            >
+              Tìm hiểu thêm
+            </button>
+          </div>
+
+          <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium text-slate-600">
+            <span>✓ Truy xuất nguồn gốc</span>
+            <span>✓ Dữ liệu minh bạch</span>
+            <span>✓ Bảo vệ người tiêu dùng</span>
           </div>
         </div>
-        <div className="absolute right-0 top-0 w-1/2 h-full hidden lg:block pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-l from-[#f3f4f1] via-[#f3f4f1]/30 to-transparent z-10" />
-          <img src="https://plus.unsplash.com/premium_photo-1679134540967-2a53b6113ba6?q=80&w=687&auto=format&fit=crop" alt="Hero" className="w-full h-full object-cover" />
+
+        {/* Hình mỹ phẩm bên phải, không có ô thông tin màu trắng */}
+        <div className="relative mt-12 hidden min-h-[480px] flex-1 items-center justify-center lg:mt-0 lg:flex">
+          <div className="absolute right-8 top-10 h-72 w-72 rounded-full bg-green-50 blur-3xl" />
+
+          <img
+            src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=900&q=85"
+            alt="Sản phẩm chăm sóc da"
+            className="relative z-10 max-h-[500px] w-full max-w-lg rounded-3xl object-contain"
+          />
+
+          <div className="absolute bottom-8 left-0 h-24 w-24 rounded-full bg-[#E5F5E9] blur-2xl" />
         </div>
       </section>
 
       {/* ── BANNER SLIDER ── */}
       {banner && <BannerSlider banner={banner} />}
 
-      {/* ── DANH MỤC ── */}
-      <section className="py-20 px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <h2 className="text-3xl font-bold mb-2">Danh mục nổi bật</h2>
-              <p className="text-slate-500">Chăm sóc toàn diện cho vẻ đẹp của bạn</p>
-            </div>
-            <Link to="/product" className="text-[#2D5A27] font-bold border-b-2 border-[#2D5A27] hover:opacity-70 transition-opacity">Xem tất cả</Link>
-          </div>
-          {catLoading ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[...Array(4)].map((_, i) => <div key={i} className="rounded-[2rem] bg-slate-100 animate-pulse h-48" />)}
-            </div>
-          ) : displayCats.length === 0 ? (
-            <div className="text-center py-12">
-              <Loader2 className="mx-auto animate-spin text-slate-300 mb-3" size={32} />
-              <p className="text-slate-400 font-bold">Chưa có danh mục nào.</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
-              {displayCats.map((cat, i) => (
-                <div key={cat.id}
-                  onClick={() => navigate(`/product?category=${cat.id}&categoryName=${encodeURIComponent(cat.name)}`)}
-                  className={`group p-8 rounded-[2rem] ${CAT_COLORS[i % CAT_COLORS.length]} hover:shadow-xl transition-all duration-500 cursor-pointer text-center border border-transparent hover:border-white`}
-                >
-                  <div className="w-24 h-24 mx-auto mb-6 relative">
-                    <div className="absolute inset-0 bg-white/50 rounded-full blur-2xl group-hover:blur-3xl transition-all" />
-                    <img src={cat.image || CAT_IMGS[i % CAT_IMGS.length]} alt={cat.name}
-                      className="w-full h-full object-cover rounded-full relative z-10 shadow-md group-hover:scale-110 transition-transform duration-500"
-                      onError={e => { e.target.src = CAT_IMGS[i % CAT_IMGS.length]; }}
-                    />
-                  </div>
-                  <h3 className="font-bold text-slate-800 group-hover:text-[#2D5A27] transition-colors text-lg">{cat.name}</h3>
-                  {cat.description && <p className="text-xs text-slate-400 mt-1 line-clamp-1">{cat.description}</p>}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
 
       {/* ── SẢN PHẨM NỔI BẬT ── */}
       {featuredProds.length > 0 && (
@@ -494,20 +497,19 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
             <div>
-              <span className="text-2xl font-extrabold tracking-tighter text-[#2D5A27] mb-6 block">LUXE GLOW</span>
-              <p className="text-slate-600 text-sm leading-relaxed mb-6">Nâng tầm vẻ đẹp tự nhiên của bạn với những sản phẩm mỹ phẩm cao cấp nhất.</p>
+              <span className="text-4xl font-extrabold tracking-tighter text-[#2D5A27] mb-6 block">LUXE GLOW</span>
+              <p className="text-slate-600 text-sm leading-relaxed mb-6">Nền tảng hỗ trợ xác minh tính xác thực của mỹ phẩm bằng công nghệ Blockchain. Góp phần minh bạch thông tin sản phẩm và bảo vệ người tiêu dùng.</p>
               <div className="flex space-x-4">
                 {socials.map(({ Icon, href }, i) => (
                   <a key={i} href={href} className="w-10 h-10 rounded-full bg-[#2D5A27]/10 flex items-center justify-center text-[#2D5A27] hover:bg-[#2D5A27] hover:text-white transition-all"><Icon size={18} /></a>
                 ))}
               </div>
             </div>
-            <FooterColumn title="Chăm sóc khách hàng" links={[{label:"Liên hệ",to:"#"},{label:"Theo dõi đơn hàng",to:"#"},{label:"Vận chuyển",to:"#"}]} />
-            <FooterColumn title="Về chúng tôi" links={[{label:"Câu chuyện",to:"#"},{label:"Tuyển dụng",to:"#"},{label:"Đại lý",to:"#"}]} />
-            <FooterColumn title="Chính sách" links={[{label:"Bảo mật",to:"#"},{label:"Điều khoản",to:"#"},{label:"Đổi trả",to:"#"}]} />
+            <FooterColumn title="Về chúng tôi" links={[{label:"Giới thiệu hệ thống",to:"#"},{label:"Công nghệ Blockchain",to:"#"},{label:"Thông tin sản phẩm",to:"#"}]} />
+            <FooterColumn title="Sản phẩm" links={[{label:"Danh sách mỹ phẩm",to:"#"},{label:"Xác minh sản phẩm",to:"#"},{label:"Truy xuất nguồn gốc",to:"#"}]} />
+            <FooterColumn title="Hỗ trợ" links={[{label:"Hướng dẫn xác minh",to:"#"},{label:"Câu hỏi thường gặp",to:"#"},{label:"Liên hệ",to:"#"}]} />
           </div>
           <div className="pt-8 border-t border-[#2D5A27]/10 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-slate-500 text-xs font-medium">© 2024 LUXE GLOW. All rights reserved.</p>
           </div>
         </div>
       </footer>
